@@ -45,7 +45,6 @@
       </xs:choice>
       <xs:element type="actionRef" name="actionRef" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element type="documentRef" name="documentRef" minOccurs="0"/>
-      <xs:element type="storage" name="storage" minOccurs="0"/>
       <xs:element type="remote" name="remote" minOccurs="0"/>
       <xs:element type="xs:int" name="length" minOccurs="0"/>
       <xs:element type="allowedNets" name="allowedNets" minOccurs="0"/>
@@ -70,7 +69,6 @@
       </xs:choice>
       <xs:element type="event" name="event" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
-    <xs:attribute name="global" type="xs:boolean"/>
   </xs:complexType>
   <xs:complexType name="mapping">
     <xs:sequence>
@@ -248,7 +246,6 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="number"/>
       <xs:enumeration value="text"/>
-      <xs:enumeration value="stringCollection"/>
       <xs:enumeration value="enumeration"/>
       <xs:enumeration value="enumeration_map"/>
       <xs:enumeration value="multichoice"/>
@@ -597,20 +594,6 @@
     <xs:sequence>
       <xs:element name="expression" type="valid"/>
       <xs:element name="message" type="i18nStringType"/>
-      <xs:element name="name" type="xs:string" minOccurs="0"/>
-      <xs:element name="arguments" type="arguments" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="arguments">
-    <xs:sequence>
-      <xs:element type="argument" name="argument" maxOccurs="unbounded" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="argument">
-    <xs:sequence>
-      <xs:element name="key" type="xs:string"/>
-      <xs:element name="dynamic" type="xs:boolean"/>
-      <xs:element name="value" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="init">
@@ -619,22 +602,10 @@
     </xs:simpleContent>
   </xs:complexType>
   <xs:simpleType name="remote">
-    <xs:annotation>
-      <xs:documentation>
-        This attribute is deprecated, use <storage>...</storage> instead
-      </xs:documentation>
-    </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:maxLength value="0"/>
     </xs:restriction>
   </xs:simpleType>
-  <xs:complexType name="storage">
-    <xs:sequence>
-      <xs:element type="xs:string" name="type"/>
-      <xs:element type="xs:string" name="host" minOccurs="0"/>
-      <xs:element type="xs:string" name="bucket" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="trigger">
     <!--todo: only if time -->
     <xs:choice minOccurs="0">

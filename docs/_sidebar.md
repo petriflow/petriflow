@@ -1,6 +1,5 @@
 * [Introduction](/)
-* [Get Started](get_started.md)
-* [Specification](specification.md)
+* [Objects](objects.md)
 * [Action API](actions.md)
 * [Examples](examples.md)
 * Tutorials

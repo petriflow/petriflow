@@ -72,6 +72,7 @@
   </xs:complexType>
   <xs:complexType name="dataField">
     <xs:sequence>
+      <xs:element type="xs:string" name="id"/>
       <xs:element type="xs:string" name="value"/>
       <xs:element type="xs:string" name="filterMetadata" minOccurs="0"/>
       <xs:element type="stringCollection" name="allowedNets" minOccurs="0"/>

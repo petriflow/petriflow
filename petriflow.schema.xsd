@@ -12,6 +12,7 @@
         <xs:element type="xs:string" name="processIdentifier"/>
         <xs:element type="xs:string" name="processVersion" minOccurs="0"/>
         <xs:element type="xs:string" name="author"/>
+        <xs:element type="xs:string" name="color" minOccurs="0"/>
         <xs:element type="i18nStringType" name="title"/>
         <xs:element type="tags" name="tags" minOccurs="0"/>
         <xs:element name="creationDate" type="xs:dateTime"/>
@@ -25,10 +26,11 @@
         <xs:element name="immediateDataFields" type="stringCollection" minOccurs="0"/>
         <xs:element name="activePlaces" type="map" minOccurs="0"/>
         <xs:element name="consumedTokens" type="map" minOccurs="0"/>
-        <xs:element name="permissions" type="permissions" minOccurs="0"/>
-        <xs:element name="userRefs" type="permissions" minOccurs="0"/>
-        <xs:element name="users" type="permissions" minOccurs="0"/>
-        <xs:element name="dataField" type="dataField" minOccurs="0"/>
+        <xs:element name="permissions" type="permissionMap" minOccurs="0"/>
+        <xs:element name="userRefs" type="permissionMap" minOccurs="0"/>
+        <xs:element name="users" type="permissionMap" minOccurs="0"/>
+        <xs:element name="dataField" type="dataField" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="task" type="task" minOccurs="0" maxOccurs="unbounded"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -46,30 +48,106 @@
   <xs:complexType name="integerMapEntry">
     <xs:simpleContent>
       <xs:extension base="xs:integer">
-        <xs:attribute name="id"/>
+        <xs:attribute name="key" type="xs:string" use="required"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
+  <xs:complexType name="permissionMap">
+    <xs:sequence>
+      <xs:element type="permissions" name="entry" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="permissions">
     <xs:sequence>
-      <xs:element type="booleanMapEntry" name="permission"/>
+      <xs:element type="booleanMapEntry" name="permission" maxOccurs="unbounded"/>
     </xs:sequence>
-    <xs:attribute name="id" type="xs:string"/>
+    <xs:attribute name="id" type="xs:string" use="required"/>
   </xs:complexType>
   <xs:complexType name="booleanMapEntry">
     <xs:simpleContent>
       <xs:extension base="xs:boolean">
-        <xs:attribute name="id"/>
+        <xs:attribute name="key" type="xs:string" use="required"/>
       </xs:extension>
     </xs:simpleContent>
   </xs:complexType>
   <xs:complexType name="dataField">
     <xs:sequence>
       <xs:element type="xs:string" name="value"/>
+      <xs:element type="xs:string" name="filterMetadata" minOccurs="0"/>
       <xs:element type="stringCollection" name="allowedNets" minOccurs="0"/>
       <xs:element type="xs:string" name="encryption" minOccurs="0"/>
-      <xs:element type="xs:dateTime" name="lastModified"/>
+      <xs:element type="xs:dateTime" name="lastModified" minOccurs="0"/>
+      <xs:element type="xs:long" name="version"/>
+      <xs:element type="component" name="component" minOccurs="0"/>
+      <xs:element type="dataRefComponents" name="dataRefComponents" minOccurs="0"/>
+      <xs:element type="validations" name="validations" minOccurs="0"/>
+      <xs:element type="options" name="options" minOccurs="0"/>
+      <xs:element type="taskBehaviors" name="behaviors"/>
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dataRefComponents">
+    <xs:simpleContent>
+      <xs:extension base="component">
+        <xs:attribute name="taskId" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="taskBehaviors">
+    <xs:sequence>
+      <xs:element type="behaviors" name="taskBehaviors"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="behaviors">
+    <xs:sequence>
+        <xs:element name="behavior" type="behavior" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="taskId" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="task">
+    <xs:sequence>
+      <xs:element type="xs:string" name="id"/>
+      <xs:element type="xs:string" name="transitionId"/>
+      <xs:element type="i18nStringType" name="title"/>
+      <xs:element type="xs:integer" name="priority"/>
+      <xs:element type="xs:string" name="userId" minOccurs="0"/>
+      <xs:element type="xs:dateTime" name="startDate" minOccurs="0"/>
+      <xs:element type="xs:dateTime" name="finishDate" minOccurs="0"/>
+      <xs:element type="xs:string" name="finishedBy" minOccurs="0"/>
+      <xs:element type="xs:string" name="transactionId" minOccurs="0"/>
+      <xs:element type="xs:string" name="icon" minOccurs="0"/>
+      <xs:element type="assignPolicy" name="assignPolicy" minOccurs="0"/>
+      <xs:element type="dataFocusPolicy" name="dataFocusPolicy" minOccurs="0"/>
+      <xs:element type="finishPolicy" name="finishPolicy" minOccurs="0"/>
+      <xs:element type="tags" name="tags" minOccurs="0" />
+      <xs:element type="stringCollection" name="viewRoles" minOccurs="0"/>
+      <xs:element type="stringCollection" name="viewUserRefs" minOccurs="0"/>
+      <xs:element type="stringCollection" name="viewUsers" minOccurs="0"/>
+      <xs:element type="stringCollection" name="negativeViewRoles" minOccurs="0"/>
+      <xs:element type="stringCollection" name="negativeViewUsers" minOccurs="0"/>
+      <xs:element type="stringCollection" name="immediateDataFields" minOccurs="0"/>
+      <xs:element name="roles" type="permissions" minOccurs="0"/>
+      <xs:element name="userRefs" type="permissions" minOccurs="0"/>
+      <xs:element name="users" type="permissions" minOccurs="0"/>
+      <xs:element name="assignedUserPolicies" type="assignedUserPolicies" minOccurs="0"/>
+      <xs:element name="triggers" type="taskTriggers" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="assignedUserPolicies">
+    <xs:sequence>
+      <xs:element type="booleanMapEntry" name="assignedUserPolicy" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="taskTriggers">
+    <xs:sequence>
+      <xs:element type="triggerWithId" name="trigger"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="triggerWithId">
+    <xs:simpleContent>
+      <xs:extension base="trigger">
+          <xs:attribute name="id" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
   </xs:complexType>
   <!-- ===== DOCUMENT ELEMENTS ===== -->
   <xs:complexType name="transaction">

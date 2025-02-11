@@ -3,6 +3,74 @@
 <xs:schema elementFormDefault="qualified"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            version="1.1.0">
+  <xs:element name="case">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="id"/>
+        <xs:element type="xs:string" name="visualId"/>
+        <xs:element type="xs:string" name="uriNodeId"/>
+        <xs:element type="xs:string" name="processIdentifier"/>
+        <xs:element type="xs:string" name="processVersion" minOccurs="0"/>
+        <xs:element type="xs:string" name="author"/>
+        <xs:element type="i18nStringType" name="title"/>
+        <xs:element type="tags" name="tags" minOccurs="0"/>
+        <xs:element name="creationDate" type="xs:dateTime"/>
+        <xs:element name="lastModified" type="xs:dateTime"/>
+        <xs:element name="enabledRoles" type="stringCollection" minOccurs="0"/>
+        <xs:element name="viewRoles" type="stringCollection" minOccurs="0"/>
+        <xs:element name="viewUserRefs" type="stringCollection" minOccurs="0"/>
+        <xs:element name="viewUsers" type="stringCollection" minOccurs="0"/>
+        <xs:element name="negativeViewRoles" type="stringCollection" minOccurs="0"/>
+        <xs:element name="negativeViewUsers" type="stringCollection" minOccurs="0"/>
+        <xs:element name="immediateDataFields" type="stringCollection" minOccurs="0"/>
+        <xs:element name="activePlaces" type="map" minOccurs="0"/>
+        <xs:element name="consumedTokens" type="map" minOccurs="0"/>
+        <xs:element name="permissions" type="permissions" minOccurs="0"/>
+        <xs:element name="userRefs" type="permissions" minOccurs="0"/>
+        <xs:element name="users" type="permissions" minOccurs="0"/>
+        <xs:element name="dataField" type="dataField" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <!-- ===== CASE ELEMENTS ===== -->
+  <xs:complexType name="stringCollection">
+    <xs:sequence>
+      <xs:element type="xs:string" name="value" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="map">
+    <xs:choice>
+      <xs:element type="integerMapEntry" name="entry" maxOccurs="unbounded"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="integerMapEntry">
+    <xs:simpleContent>
+      <xs:extension base="xs:integer">
+        <xs:attribute name="id"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="permissions">
+    <xs:sequence>
+      <xs:element type="booleanMapEntry" name="permission"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string"/>
+  </xs:complexType>
+  <xs:complexType name="booleanMapEntry">
+    <xs:simpleContent>
+      <xs:extension base="xs:boolean">
+        <xs:attribute name="id"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="dataField">
+    <xs:sequence>
+      <xs:element type="xs:string" name="value"/>
+      <xs:element type="stringCollection" name="allowedNets" minOccurs="0"/>
+      <xs:element type="xs:string" name="encryption" minOccurs="0"/>
+      <xs:element type="xs:dateTime" name="lastModified"/>
+    </xs:sequence>
+  </xs:complexType>
   <!-- ===== DOCUMENT ELEMENTS ===== -->
   <xs:complexType name="transaction">
     <xs:sequence>

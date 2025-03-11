@@ -78,9 +78,9 @@
   <xs:complexType name="dataField">
     <xs:sequence>
       <xs:element type="xs:string" name="id"/>
-      <xs:element type="xs:string" name="value"/>
-      <xs:element type="xs:string" name="filterMetadata" minOccurs="0"/>
+      <xs:element type="filterMetadata" name="filterMetadata" minOccurs="0"/>
       <xs:element type="stringCollection" name="allowedNets" minOccurs="0"/>
+      <xs:element type="stringCollection" name="values" minOccurs="0"/>
       <xs:element type="xs:string" name="encryption" minOccurs="0"/>
       <xs:element type="xs:string" name="lastModified" minOccurs="0"/>
       <xs:element type="xs:long" name="version"/>
@@ -90,7 +90,52 @@
       <xs:element type="options" name="options" minOccurs="0"/>
       <xs:element type="taskBehaviors" name="behaviors" minOccurs="0"/>
     </xs:sequence>
+    <xs:attribute name="type" type="data_type" use="required"/>
   </xs:complexType>
+  <xs:complexType name="filterMetadata">
+    <xs:sequence>
+      <xs:element type="filterType" name="filterType"/>
+      <xs:element type="predicateTreeMetadata" name="predicateMetadata" minOccurs="0"/>
+      <xs:element type="stringCollection" name="searchCategories" minOccurs="0"/>
+      <xs:element type="xs:boolean" name="defaultSearchCategories" minOccurs="0"/>
+      <xs:element type="xs:boolean" name="inheritAllowedNets" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="predicateTreeMetadata">
+    <xs:sequence>
+      <xs:element type="predicateMetadataArray" name="predicate" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="predicateMetadataArray">
+    <xs:sequence>
+      <xs:element type="categoryGeneratorMetadata" name="data" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="categoryGeneratorMetadata">
+    <xs:sequence>
+      <xs:element type="xs:string" name="category"/>
+      <xs:element type="categoryMetadataConfiguration" name="configuration"/>
+      <xs:element type="stringCollection" name="values" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="categoryMetadataConfiguration">
+    <xs:sequence>
+      <xs:element type="configurationValue" name="value" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="configurationValue">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="id" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="filterType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="task"/>
+      <xs:enumeration value="case"/>
+    </xs:restriction>
+  </xs:simpleType>
   <xs:complexType name="dataRefComponent">
     <xs:sequence>
       <xs:element name="component" type="component"/>
@@ -144,7 +189,7 @@
   </xs:complexType>
   <xs:complexType name="taskTrigger">
     <xs:sequence>
-      <xs:element type="triggerWithId" name="trigger"/>
+      <xs:element type="triggerWithId" name="trigger" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="triggerWithId">

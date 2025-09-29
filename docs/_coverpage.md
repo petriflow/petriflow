@@ -2,7 +2,7 @@
 
 # Petriflow
 
-> Next-generation end-to-end low code language.
+> Next-generation low code language.
 
 - Easy to learn
 - Powerful

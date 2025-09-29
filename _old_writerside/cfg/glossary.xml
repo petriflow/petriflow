@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE terms SYSTEM "https://resources.jetbrains.com/writerside/1.0/glossary.dtd">
+<terms>
+    <term name="NP">Netgrif Platform</term>
+    <term name="NAE">Netgrif Application Engine</term>
+    <term name="NAB">Netgrif Application Builder</term>
+</terms>

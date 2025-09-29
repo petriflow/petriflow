@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE buildprofiles SYSTEM "https://resources.jetbrains.com/writerside/1.0/build-profiles.dtd">
+<buildprofiles xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/build-profiles.xsd"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <variables>
+        <web-root>https://petriflow.com</web-root>
+        <download-page>https://builder.netgrif.cloud</download-page>
+        <download-title>Build your app</download-title>
+        <showDownloadButton>true</showDownloadButton>
+        <primary-color>#2497F2</primary-color>
+        <header-logo>logo.png</header-logo>
+        <custom-favicons>favicon.ico</custom-favicons>
+        <versions-switcher>https://petriflow.com/help-versions.json</versions-switcher>
+    </variables>
+
+    <footer>
+<!--        TODO blog (môžme mať blog na hashnode, uvidíme ako sa to osvedčí), bluesky?, linkedin-->
+        <social type="youtube" href="https://www.youtube.com/channel/UCNfqgnjskMMpy7QvOOKhKgw">YouTube</social>
+
+<!--        TODO discourse, web, etask, builder-->
+        <link href="https://github.io/netgrif">GitHub</link>
+
+        <copyright>2025 NETGRIF, s.r.o.</copyright>
+    </footer>
+
+    <sitemap priority="0.35" change-frequency="monthly"/>
+
+    <build-profile instance="petriflow">
+        <variables>
+            <noindex-content>false</noindex-content>
+        </variables>
+    </build-profile>
+
+</buildprofiles>

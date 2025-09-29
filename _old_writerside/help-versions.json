@@ -1,0 +1,32 @@
+[
+  {
+    "version": "1.0.0",
+    "url": "/1.0.0",
+    "isCurrent": false
+  },
+  {
+    "version": "1.0.1",
+    "url": "/1.0.1",
+    "isCurrent": false
+  },
+  {
+    "version": "1.0.2",
+    "url": "/1.0.2",
+    "isCurrent": false
+  },
+  {
+    "version": "1.0.3",
+    "url": "/1.0.3",
+    "isCurrent": false
+  },
+  {
+    "version": "1.0.4",
+    "url": "/1.0.4",
+    "isCurrent": false
+  },
+  {
+    "version": "1.0.5",
+    "url": "/1.0.5",
+    "isCurrent": true
+  }
+]

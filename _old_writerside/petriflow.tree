@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="petriflow"
+                  name="Petriflow"
+                  start-page="overview.md">
+
+    <toc-element topic="overview.md"/>
+    <toc-element topic="objects.md"/>
+    <toc-element topic="action-api.topic">
+        <toc-element topic="reference-template.md"/>
+        <toc-element topic="setData.md"/>
+        <toc-element topic="finishTask.md"/>
+        <toc-element topic="assignRole.md"/>
+        <toc-element topic="assignTask.md"/>
+        <toc-element topic="findCases.md"/>
+        <toc-element topic="createCase.md"/>
+        <toc-element topic="change.md"/>
+        <toc-element topic="getData.md"/>
+        <toc-element topic="cancelTask.md"/>
+        <toc-element topic="changeCaseProperty.md"/>
+        <toc-element topic="findCase.md"/>
+        <toc-element topic="findTask.md"/>
+        <toc-element topic="findTasks.md"/>
+        <toc-element topic="execute.md"/>
+        <toc-element topic="make.md"/>
+        <toc-element topic="generate.md"/>
+        <toc-element topic="close.md"/>
+    </toc-element>
+    <toc-element topic="examples.topic">
+        <toc-element topic="tutorial-template.md"/>
+        <toc-element topic="roleRefs_permisionsMmanagement.md"/>
+        <toc-element topic="actions-basic.md"/>
+        <toc-element topic="places_transitions_arcs.md"/>
+        <toc-element topic="plases_transitions_arcs.md"/>
+        <toc-element topic="roles-basic.md"/>
+        <toc-element topic="data-basic.md"/>
+        <toc-element topic="helloWorld.md"/>
+        <toc-element topic="events-basic.md"/>
+    </toc-element>
+
+</instance-profile>

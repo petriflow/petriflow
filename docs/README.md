@@ -43,7 +43,7 @@ and then deploy it to [Application Engine](https://netgrif.com/products/#nae).
 
 ---
 
-Petriflow language is a part of the research project **Requirements and formal definition of a low-code language based
+Petriflow language definition is a part of the research project **Requirements and formal definition of a low-code language based
 on
 object-centric processes** -
 [LowcodeOCP](https://vvi.gov.sk/podporene-projekty/requirements-and-formal-definition-of-a-low-code-language-based-on-object-centric-processes).

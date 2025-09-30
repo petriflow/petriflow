@@ -11,6 +11,6 @@ The following list consists of the interim reports of the project:
 1. [Requirements](_media/reports/Requirements.pdf)
 2. [Definition of Petriflow object centric process](_media/reports/Definition.pdf)
 3. [Query Language](_media/reports/Query_Language.pdf)
-4. [Inter-process communication](_media/reports/Inter_process_communication_and_relationships.pdf)
+4. <a href="_media/reports/Inter_process_communication_and_relationships.pdf" download>Inter-process communication</a>
 5. [Process inheritance](_media/reports/Inheritance.pdf)
 6. [Translation of a subset of SQL](_media/reports/SQL.pdf)

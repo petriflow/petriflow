@@ -8,9 +8,9 @@ sets the foundation for the next phase of the project.
 
 The following list consists of the interim reports of the project:
 
-1. [Requirements](_media/reports/Requirements.pdf)
-2. <a href="_media/reports/Definition.pdf" download>Definition of Petriflow object centric process</a>
-3. [Query Language](_media/reports/Query_Language.pdf)
-4. <a href="_media/reports/Inter_process_communication_and_relationships.pdf" download>Inter-process communication</a>
-5. [Process inheritance](_media/reports/Inheritance.pdf)
-6. [Translation of a subset of SQL](_media/reports/SQL.pdf)
+1. <a href="_media/reports/Requirements.pdf">Requirements</a>
+2. <a href="_media/reports/Definition.pdf" >Definition of Petriflow object centric process</a>
+3. <a href="_media/reports/Query_Language.pdf" >Query Language</a>
+4. <a href="_media/reports/Inter_process_communication_and_relationships.pdf" >Inter-process communication</a>
+5. <a href="_media/reports/Inheritance.pdf" >Process inheritance</a>
+6. <a href="_media/reports/SQL.pdf" >Translation of a subset of SQL</a>

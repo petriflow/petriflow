@@ -271,6 +271,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="namespace"/>
       <xs:enumeration value="process"/>
+      <xs:enumeration value="global"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="arc_type">

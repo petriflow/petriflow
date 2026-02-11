@@ -4,9 +4,6 @@
 name: Release Petriflow
 
 on:
-  push:
-    branches:
-      - DEVOPS-30
   workflow_dispatch:
     inputs:
       action:
@@ -25,7 +22,7 @@ jobs:
   validate:
     name: Validate
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' || inputs.action == 'validate' || inputs.action == 'release' }}
+    if: ${{ inputs.action == 'validate' || inputs.action == 'release' }}
 
     steps:
       - name: Checkout
@@ -62,7 +59,7 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     needs: validate
-    if: ${{ github.event_name == 'workflow_dispatch' && inputs.action == 'release' }}
+    if: ${{ inputs.action == 'release' }}
 
     permissions:
       contents: write

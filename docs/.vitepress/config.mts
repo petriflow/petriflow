@@ -17,6 +17,7 @@ export default defineConfig({
     logo: '/logo.png',
 
     nav: [
+      {text: 'Language', link: '/generated/'},
       {text: 'Guides', link: '/guides'},
       {text: 'Actions API', link: '/actions'},
       {
@@ -31,6 +32,17 @@ export default defineConfig({
     ],
 
     sidebar: [
+      {
+        text: 'Petriflow Language',
+        items: [
+          {text: 'Overview', link: '/generated/'},
+          {text: 'Workflow', link: '/generated/workflow'},
+          {text: 'Data and forms', link: '/generated/data-and-forms'},
+          {text: 'Events and permissions', link: '/generated/events-and-permissions'},
+          {text: 'Coordination and queries', link: '/generated/coordination-and-queries'},
+          {text: 'Research and extensions', link: '/generated/research-and-extensions'},
+        ],
+      },
       {text: 'Objects', link: '/objects'},
       {text: 'Examples', link: '/examples'},
     ],

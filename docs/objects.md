@@ -23,6 +23,7 @@ is called a `Case`.
       <xs:element ref="version" minOccurs="0"/>
       <xs:element ref="initials" minOccurs="0"/>
       <xs:element name="title" minOccurs="0" type="i18nStringType"/>
+      <xs:element ref="comment" minOccurs="0"/>
       <xs:element ref="icon" minOccurs="0"/>
       <xs:element ref="defaultRole" minOccurs="0"/>
       <xs:element ref="transitionRole" minOccurs="0"/>
@@ -145,6 +146,7 @@ class Case {
       <xs:element ref="x"/>
       <xs:element ref="y"/>
       <xs:element ref="label"/>
+      <xs:element ref="comment" minOccurs="0"/>
       <xs:element ref="icon" minOccurs="0"/>
       <xs:element ref="priority" minOccurs="0"/>
       <xs:element ref="assignPolicy" minOccurs="0"/>
@@ -239,6 +241,7 @@ class Task {
       <xs:element ref="x"/>
       <xs:element ref="y"/>
       <xs:element ref="label"/>
+      <xs:element ref="comment" minOccurs="0"/>
       <xs:element ref="tokens"/>
       <xs:choice>
         <xs:element ref="isStatic"/>
@@ -293,6 +296,7 @@ In Petriflow weight can also be set as a reference to a data field and a place o
   <xs:complexType>
     <xs:sequence>
       <xs:element ref="id"/>
+      <xs:element ref="comment" minOccurs="0"/>
       <xs:element name="type" type="arc_type" default="regular"/>
       <xs:element ref="sourceId"/>
       <xs:element ref="destinationId"/>
@@ -340,6 +344,7 @@ In Petriflow weight can also be set as a reference to a data field and a place o
         <xs:element ref="title"/>
         <xs:element ref="name"/>
       </xs:choice>
+      <xs:element ref="comment" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
 </xs:element>
@@ -362,6 +367,7 @@ In Petriflow weight can also be set as a reference to a data field and a place o
       <xs:element ref="title"/>
       <xs:element ref="placeholder" minOccurs="0"/>
       <xs:element ref="desc" minOccurs="0"/>
+      <xs:element ref="comment" minOccurs="0"/>
       <xs:element ref="values" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="valid" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element ref="init" minOccurs="0"/>
@@ -385,3 +391,50 @@ In Petriflow weight can also be set as a reference to a data field and a place o
 
 <!-- tabs:end -->
 
+## Comment
+
+Optional design-time note that can be attached to a process, transition (task), place, data field, data reference,
+role and arc. Comments are meant for modellers and analysts (e.g. to explain why the logic is designed the way it is) and
+have no effect on the process runtime. The content is free text, typically Markdown, and should be wrapped
+in `CDATA` so that its formatting is preserved.
+
+| Element      | Position of `<comment>`              |
+|--------------|--------------------------------------|
+| `document`   | after `title`                        |
+| `role`       | after `title`                        |
+| `data`       | after `desc`                         |
+| `transition` | after `label`                        |
+| `place`      | after `label`                        |
+| `dataRef`    | after `id`                           |
+| `arc`        | after `id`                           |
+
+<!-- tabs:start -->
+
+#### **XML Schema**
+
+```xml
+
+<xs:complexType name="comment">
+  <xs:simpleContent>
+    <xs:extension base="xs:string"/>
+  </xs:simpleContent>
+</xs:complexType>
+```
+
+#### **Example**
+
+```xml
+
+<transition>
+  <id>approve</id>
+  <x>300</x>
+  <y>100</y>
+  <label>Approve order</label>
+  <comment><![CDATA[
+## Why manual approval?
+Orders above **10 000 EUR** have to be approved by a manager, see *BRD 4.2*.
+]]></comment>
+</transition>
+```
+
+<!-- tabs:end -->

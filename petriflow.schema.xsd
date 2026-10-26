@@ -16,6 +16,7 @@
       <xs:element type="i18nStringType" name="title"/>
       <xs:element type="i18nStringType" name="placeholder" minOccurs="0"/>
       <xs:element type="i18nStringType" name="desc" minOccurs="0"/>
+      <xs:element type="comment" name="comment" minOccurs="0"/>
       <xs:choice>
         <xs:element type="i18nStringTypeWithExpression" name="values" minOccurs="0" maxOccurs="unbounded"/>
         <xs:element type="options" name="options" minOccurs="0">
@@ -68,6 +69,7 @@
         <xs:element type="i18nStringType" name="title"/>
         <xs:element type="i18nStringType" name="name"/>
       </xs:choice>
+      <xs:element type="comment" name="comment" minOccurs="0"/>
       <xs:element type="event" name="event" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
     <xs:attribute name="global" type="xs:boolean"/>
@@ -88,6 +90,7 @@
       <xs:element type="nonNegativeInteger" name="x"/>
       <xs:element type="nonNegativeInteger" name="y"/>
       <xs:element type="i18nStringType" name="label"/>
+      <xs:element type="comment" name="comment" minOccurs="0"/>
       <xs:element type="tags" name="tags" minOccurs="0"/>
       <xs:element type="transitionLayout" name="layout" minOccurs="0"/>
       <xs:element type="xs:string" name="icon" minOccurs="0"/>
@@ -126,6 +129,7 @@
       <xs:element type="nonNegativeInteger" name="x"/>
       <xs:element type="nonNegativeInteger" name="y"/>
       <xs:element type="i18nStringType" name="label"/>
+      <xs:element type="comment" name="comment" minOccurs="0"/>
       <xs:element type="nonNegativeInteger" name="tokens"/>
       <xs:choice>
         <xs:element type="xs:boolean" name="isStatic"/>
@@ -136,6 +140,7 @@
   <xs:complexType name="arc">
     <xs:sequence>
       <xs:element type="xs:string" name="id"/>
+      <xs:element type="comment" name="comment" minOccurs="0"/>
       <xs:element name="type" type="arc_type" default="regular"/>
       <xs:element type="xs:string" name="sourceId"/>
       <xs:element type="xs:string" name="destinationId"/>
@@ -210,6 +215,7 @@
       <xs:element type="xs:string" name="version" minOccurs="0"/>
       <xs:element type="initials" name="initials"/>
       <xs:element type="i18nStringType" name="title"/>
+      <xs:element type="comment" name="comment" minOccurs="0"/>
       <xs:element type="xs:string" name="icon" minOccurs="0"/>
       <xs:element type="xs:boolean" name="defaultRole" minOccurs="0" default="true"/>
       <xs:element type="xs:boolean" name="anonymousRole" minOccurs="0" default="true"/>
@@ -532,6 +538,7 @@
   <xs:complexType name="dataRef">
     <xs:sequence>
       <xs:element type="xs:string" name="id"/>
+      <xs:element type="comment" name="comment" minOccurs="0"/>
       <xs:element type="logic" name="logic"/>
       <xs:element type="layout" name="layout" minOccurs="0"/>
       <xs:element type="component" name="component" minOccurs="0"/>
@@ -671,6 +678,17 @@
       <xs:extension base="xs:boolean">
         <xs:attribute name="algorithm"/>
       </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="comment">
+    <xs:annotation>
+      <xs:documentation>
+        Design-time note in Markdown attached to a process resource. It has no effect on the runtime.
+        Content should be wrapped in CDATA so its formatting is preserved.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:string"/>
     </xs:simpleContent>
   </xs:complexType>
   <xs:complexType name="i18nStringType">

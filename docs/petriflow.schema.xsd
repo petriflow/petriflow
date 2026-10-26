@@ -681,12 +681,6 @@
     </xs:simpleContent>
   </xs:complexType>
   <xs:complexType name="comment">
-    <xs:annotation>
-      <xs:documentation>
-        Design-time note in Markdown attached to a process resource. It has no effect on the runtime.
-        Content should be wrapped in CDATA so its formatting is preserved.
-      </xs:documentation>
-    </xs:annotation>
     <xs:simpleContent>
       <xs:extension base="xs:string"/>
     </xs:simpleContent>
